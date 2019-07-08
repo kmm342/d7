@@ -214,10 +214,20 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node prepend(E element) {
         // TODO item #9
         // This mid-size helper function will be used by other methods
-    	Node n;
     	
+    	/**Construct new node to be prepended to linked list*/
+    	Node n = new Node(null, element, head);
+    
+    	/**If the head is not null, then have the head's pred field (which points to the
+    	 * previous node), point to the node to be prepended to the list
+    	 */
+    	if (head != null) {
+    		head.pred = n;
+    	}
     	
-        throw new NotImplementedError();
+    	head = n;
+    	size += 1;
+    	return n;   	
     }
     
     /**
@@ -232,7 +242,33 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // This mid-size helper function will be used by other methods.
         // Do NOT test whether node is actually a Node of this list because
         // it will then not be a constant-time operation.
-        throw new NotImplementedError();
+    	
+    	/**Per instruction, node must be in this list*/
+    	boolean in_list = false;
+    	for (Node n1 = head; n1 != null; n1 = n1.succ) {
+    		if(node.equals(n1))
+    			in_list = true;
+    	}
+    	
+    	/**Per instruction, node must not be null*/
+    	assert node != null;
+    	
+    	//if there is no node preceding Node node, then just prepend
+    	if (node.pred == null) {
+    		prepend(element);
+    	}
+    	
+    	else {
+    		/**Construct new node n, to be inserted before Node node, and after the previous 
+        	 * preceding node, Node node.pred*/
+        	
+        	Node n = new Node(node.pred, element, node);
+        	
+        	node.pred.succ = n;
+        	node.pred = n;
+        	size += 1;
+        	return node;
+    	}
     }
     
     /**
