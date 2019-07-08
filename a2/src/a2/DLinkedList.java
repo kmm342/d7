@@ -269,6 +269,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	size += 1;
         	return node;
     	}
+    	return node;
     }
     
     /**
