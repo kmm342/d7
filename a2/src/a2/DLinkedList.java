@@ -27,9 +27,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     	/** Empty Linked List: no existing nodes; pointer to first+last nodes 
     	 * are both null; size will be 0
     	 */
-    	this.head = null;
-    	this.tail = null;
-    	this.size = 0;
+    	head = null;
+    	tail = null;
+    	size = 0;
     }
 
     /**
@@ -40,7 +40,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // TODO item #2
         // This is an extremely small method
     	/**Return the size of this list*/
-    	return this.size;   		
+    	return size;   		
     }
 
     /**
@@ -72,7 +72,14 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // TODO item #3
         // This should use field tail and the pred fields in nodes.
         // Do NOT use field size.
-        throw new NotImplementedError();
+    	String res= "[";
+        // invariant: res = "[s0, s1, .., sk" where sk is the object before node n
+        for (Node n = tail; n != null; n= n.pred) {
+            if (n != tail)
+                res= res + ", ";
+            res= res + n.data;
+        }
+        return res + "]";
     }
     
     /**
@@ -82,7 +89,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node append(E element) {
         // TODO item #4
         // This mid-size helper function will be used by other methods
-        throw new NotImplementedError();
+    	Node n = new Node(tail, element, null);
+    	tail.succ = n;
+    	return n;
     }
     
     /** Append element to the end of this list and return true. */
@@ -91,7 +100,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Rely on helper methods to keep this method small
         // This is THE MOST IMPORTANT method to get right because it will be used
         // in nearly every test
-        throw new NotImplementedError();
+    	this.append(element);
+    	return true;
     }
     
     /**
@@ -109,7 +119,29 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Note that there are two ways to get to a node: from the head or from the tail.
         // This MUST use the fastest way for index.
         // (If h is exactly the middle, then either way is ok.)
-        throw new NotImplementedError();
+    	
+    	/**check if index is out of bounds*/
+    	if (index <0 || index >= size-1) {
+    		throw new IndexOutOfBoundsException();
+    	}
+
+    	Node n;
+    	/** if size/2 < size-1-index, then you should start searching from head*/
+    	if (size-1-index < size/2) {
+    		n = head;
+    		for (int i = 0; i<index; i++) {
+    			n = n.succ;
+    			}
+    		}
+
+    	/** if (size-index) < 0, then you should start searching from tail*/	
+    	else  {
+    		n = tail;
+    		for (int i = size-1; i<index; i--) {
+    			n = n.pred;
+    		}
+    		return n;			
+    	}	
     }
     
     /**
@@ -125,7 +157,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Rely on helper methods to keep this method small.
         // Note that the helper method could throw the exception; doesn't
         // have to be done here.
-        throw new NotImplementedError();
+
+    	return getNode(index).data;
     }
     
     /**
@@ -143,7 +176,19 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Rely on helper methods to keep this method small.
         // Note that a helper method could throw the exception; doesn't
         // have to be done here.
-        throw new NotImplementedError();
+    	
+    	/**Get Node specified by index*/
+    	
+    	Node n = getNode(index);
+    	
+    	/**Store old data of indexed node*/
+    	E oldData = n.data;
+    	
+    	/**Replace old data in with element E*/
+    	n.data = element;
+    	
+    	//return previously stored data of indexed node
+    	return oldData;
     }
     
     /**
@@ -154,6 +199,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node prepend(E element) {
         // TODO item #9
         // This mid-size helper function will be used by other methods
+    	
         throw new NotImplementedError();
     }
     
