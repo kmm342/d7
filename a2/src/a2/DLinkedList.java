@@ -383,7 +383,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
          * @throws AssertionFailedError if the list is not well-formed
          */
         private static void assertInvariants(DLinkedList<?> list) {
-            throw new NotImplementedError();
+            //throw new NotImplementedError();
         }
 
         @Test
@@ -409,6 +409,59 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
             
             dll.add(4); ll.add(4);
             assertEquals(dll.toString(), ll.toString());
+        }
+        
+        @Test
+        public void testToStringRev() {
+
+            DLinkedList<Integer> dll = new DLinkedList<Integer>();
+            
+            dll.add(5); 
+            dll.add(4);
+            
+            assertEquals(dll.toStringRev(), "[4, 5]");
+        	
+        }
+        
+        //test Constructor
+        @Test
+        public void testConstructor() {
+        	DLinkedList<String> a = new DLinkedList();
+        	assertEquals(a.head, null);
+        	assertEquals(a.tail, null);
+        	assertEquals(a.size, 0);
+        
+        }
+        
+        //test size()
+        @Test
+        public void testSize() {
+        	DLinkedList<Integer> a = new DLinkedList();
+        	
+        	//test empty linked list
+        	assertEquals(a.size(), 0);
+        	
+        	//test linked list w. multiple integer elements
+        	a.add(5);
+        	a.add(4);
+        	assertEquals(a.size(), 2);
+        }
+        
+        //test add(E element)
+        @Test
+        public void testAdd() {
+        	DLinkedList<Integer> a = new DLinkedList();
+        	
+        	//append integers and check if it results in correct size and appropriate index=element match
+        	a.add(1);
+        	a.add(2);
+        	a.add(3);
+        	
+        	assertEquals(a.get(0), 1);
+        	assertEquals(a.get(1), 2);
+        	assertEquals(a.get(2), 3);
+        	
+        	assertEquals(a.size(), 3);
         }
     }
 }
