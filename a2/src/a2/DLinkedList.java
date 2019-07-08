@@ -286,7 +286,11 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Rely on helper methods to keep this method small.
         // Note that a helper method could throw the exception; doesn't
         // have to be done here.
-        throw new NotImplementedError();
+    	
+    	if (index != size) 
+    		insertBefore(element, getNode(index));
+    	else 
+    		append(element);
     }
     
     /**
@@ -298,7 +302,21 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private E removeNode(Node n) {
         // TODO item #12
         // This is a large helper method
-        throw new NotImplementedError();
+    	
+    	boolean in_list = false;
+    	for (Node n1 = head; n1 != null; n1 = n1.succ) {
+    		if (n.equals(n1))
+    			in_list = true;
+    	}
+    	
+    	assert(in_list);
+    	if (n.pred != null)
+    		n.pred.succ = n.succ;
+    	if (n.succ != null)
+    		n.succ.pred = n.pred;
+    	size -= 1;
+    	return n.data;
+    	
     }
     
     /**
@@ -315,7 +333,15 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // Rely on helper methods to keep this method small.
         // Note that a helper method could throw the exception; doesn't
         // have to be done here.
-        throw new NotImplementedError();
+    	
+    	Node n = getNode(i);
+    	
+    	if (n.pred != null)
+    		n.pred.succ = n.succ;
+    	if (n.succ != null)
+    		n.succ.pred = n.pred;
+    	size -= 1;
+    	return n.data;
     }
     
     ////////////////////////////////////////////////////////////////////////////
