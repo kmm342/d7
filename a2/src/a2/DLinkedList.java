@@ -89,8 +89,23 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node append(E element) {
         // TODO item #4
         // This mid-size helper function will be used by other methods
+    	
+    	/**Construct new node*/
     	Node n = new Node(tail, element, null);
-    	tail.succ = n;
+    	
+    	/**If the head is null, then the list is empty and Node n must be set as first*/
+    	if (head == null)
+    		head = n;
+    	
+    	/**If the tail is NOT null, then the appended Node n must be set as the node
+    	 * succeeding the tail
+    	 */
+    	if (tail != null)
+    		tail.succ = n;
+    		
+    	/**If the tail IS null, then the appended Node n must be set as the new tail*/
+    	tail = n;
+    	size += 1;
     	return n;
     }
     
@@ -139,9 +154,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     		n = tail;
     		for (int i = size-1; i<index; i--) {
     			n = n.pred;
-    		}
-    		return n;			
-    	}	
+    		}		
+    	}
+    	return n;
     }
     
     /**
