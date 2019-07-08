@@ -199,6 +199,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node prepend(E element) {
         // TODO item #9
         // This mid-size helper function will be used by other methods
+    	Node n;
+    	
     	
         throw new NotImplementedError();
     }
