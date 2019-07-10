@@ -149,7 +149,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     			}
     		}
 
-    	/** if (size-index) < 0, then you should start searching from tail*/	
+    	/** if (size-index) <= 0, then you should start searching from tail*/	
     	else  {
     		n = tail;
     		for (int i = size-1; i<index; i--) {
@@ -463,6 +463,56 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	
         	assertEquals(a.size(), 3);
         }
+        
+        //test getNode(index)
+        @Test
+        public void testGetNode() {
+        	//didn't bother testing index-out-of-bounds exception
+        	//Odd # elements, with index closer to head
+        	DLinkedList<Integer> alpha = new DLinkedList();
+        	
+        	
+        	a = Node(null, 1, b);
+        	b = Node(a, 2, c);
+        	
+        	a.add(1);
+        	a.add(2);
+        	a.add(3);
+        	a.add(4);
+        	a.add(5);
+        	a.add(6);
+        	a.add(7);
+        	
+        	assertEquals(a.get(1), 2);
+        	
+        	//Odd # elements, with index closer to tail
+        	assertEquals(a.get(5), 6);
+        	
+        	//Odd # elements, with index in center
+        	assertEquals(a.get(3), 4);
+        	
+        	//Even # elements
+        	DLinkedList<Integer> b = new DLinkedList();
+        	b.add(1);
+        	b.add(2);
+        	b.add(3);
+        	b.add(4);
+        	b.add(5);
+        	b.add(6);
+        	assertEquals(b.get(2), 3);
+        }
+        
+        //test get(index)
+        @Test
+        public void testGet() {
+        	DLinkedList<Integer> a = new DLinkedList();
+        	a.add(1);
+        	a.add(2);
+        	a.add(3);
+        	
+        	
+        }
+        
     }
 }
 
