@@ -3,7 +3,7 @@ public class sayHello {
 
 	
 	public class String Greetings() {
-		println."hello";
+		system.println.("hello");
 	}
 	
 	public static void main(String[] args) {
