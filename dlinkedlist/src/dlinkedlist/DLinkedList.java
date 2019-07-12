@@ -1,4 +1,4 @@
-package a2;
+package dlinkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
