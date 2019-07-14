@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.eclipse.jdt.annotation.NonNull;
 
 import model.Board;
@@ -69,6 +73,10 @@ public abstract class MinMaxAI extends Controller {
 	 */
 	protected abstract Iterable<Location> moves(Board b);
 	
+	private Player player;
+	
+	private int depth;
+	
 	/**
 	 * Create an AI that will recursively search for the next move using the
 	 * minimax algorithm.  When searching for a move, the algorithm will look
@@ -79,16 +87,70 @@ public abstract class MinMaxAI extends Controller {
 	 */
 	protected MinMaxAI(Player me, int depth) {
 		super(me);
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		player = me;
+		this.depth = depth;
 	}
 
 	/**
 	 * Return the move that maximizes the score according to the minimax
 	 * algorithm described above.
 	 */
+	
+	
+	public boolean Max = true;
+	private int value = 1;
+	
+	
 	protected @Override Location nextMove(Game g) {
-		// TODO Auto-generated method stub
+		Iterator<Location> available = moves(g.getBoard()).iterator();
+		List<Integer> scores = new ArrayList<>();
+		
+		while(available.hasNext()) {
+			Game g2 = new Game(player);
+			
+			//run minimax algorithm
+		}
+		
 		throw new NotImplementedException();
 	}
+	
+	
+	
+	 class Node<E> {
+		private int score;
+		private Node pred;
+		private Location spot;
+		
+		private Node(Node pred, int score, Location spot) {
+			 this.score = score;
+			 this.pred = pred;
+			 this.spot = spot;
+			 }
+		}
+	 
+	 
+	 
+	 public void minimax (Node node, MinMaxAI.depth, Max) {
+		 if (depth == 0) {
+			 return node.score;
+		 }
+		 Node childNodes = node.getChildNodes();
+		 if (Max) {
+			 value = -1;
+			 //for each child of Node node, do minimax(child, depth -1, FALSE)
+			 Node childNodes = node.getChildNodes();
+			 for (int i = 0; i < childNodes.getLength(); i++) {
+				 value = max(value, minimax(node.item(i), depth -1, FALSE));
+			return value;
+			 }
+		 }
+		 
+		 else //minimizing score
+			value = +1;
+		 	for (int i = 0; i < childNodes.getLength(); i++) {
+		 		value = max(value, minimax(node.item(i), depth -1, TRUE));
+		 	return value;
+		 	}
+	 }
 }
+	 
