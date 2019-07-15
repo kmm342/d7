@@ -109,6 +109,7 @@ public abstract class MinMaxAI extends Controller {
 			Game g2 = new Game(player);
 			
 			//run minimax algorithm
+			minimax(node, depth, Max);
 		}
 		
 		throw new NotImplementedException();
@@ -127,6 +128,7 @@ public abstract class MinMaxAI extends Controller {
 			 this.spot = spot;
 			 }
 		}
+
 	 
 	 
 	 
