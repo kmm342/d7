@@ -101,6 +101,15 @@ public abstract class MinMaxAI extends Controller {
 	private int value = 1;
 	
 	
+	//helper method: needs to retrieve board from game via getBoard;
+	//use update() to make copy of game's Board object
+	
+	public void helpermethod(Game g) {
+		Board b = g.getBoard();
+		
+		b.update(player, loc); //loc is supposed to take cue of location from minimax?
+	}
+	
 	protected @Override Location nextMove(Game g) {
 		Iterator<Location> available = moves(g.getBoard()).iterator();
 		List<Integer> scores = new ArrayList<>();
