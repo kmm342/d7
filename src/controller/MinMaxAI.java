@@ -95,7 +95,31 @@ public abstract class MinMaxAI extends Controller {
 	 * Return the move that maximizes the score according to the minimax
 	 * algorithm described above.
 	 */
-	
+	protected @Override Location nextMove(Game g) {
+		Iterator<Location> available = moves(g.getBoard()).iterator();
+		List<Integer> scores = new ArrayList<>();
+		
+		
+		
+		for (int i = 0; i =, i++) {
+			
+		}
+//		
+//		Location potentialLocation = null;
+//		
+//		if (potentialLocation == new Location(5,5) && g.getBoard() == g.getBoard().EMPTY) {
+//			return potentialLocation;
+//		}
+//		
+//		while(available.hasNext()) {
+//			Game g2 = new Game(player); //new game copy		 
+//				potentialLocation = available.next();
+//			//run minimax algorithm
+//			minimax(g, depth, Max);
+//		}
+//			
+		throw new NotImplementedException();
+	}
 	
 	public boolean Max = true;
 	private int value = 1;
@@ -110,40 +134,15 @@ public abstract class MinMaxAI extends Controller {
 		b.update(player, loc); //loc is supposed to take cue of location from minimax?
 	}
 	
-	protected @Override Location nextMove(Game g) {
-		Iterator<Location> available = moves(g.getBoard()).iterator();
-		List<Integer> scores = new ArrayList<>();
-		
-		while(available.hasNext()) {
-			Game g2 = new Game(player);
-			
-			//run minimax algorithm
-			minimax(node, depth, Max);
-		}
-		
-		throw new NotImplementedException();
-	}
-	
-	
-	
-	 class Node<E> {
-		private int score;
-		private Node pred;
-		private Location spot;
-		
-		private Node(Node pred, int score, Location spot) {
-			 this.score = score;
-			 this.pred = pred;
-			 this.spot = spot;
-			 }
-		}
 
+	
 	 
-	 
-	 
-	 public void minimax (Node node, MinMaxAI.depth, Max) {
+	 //This function, minimax, runs the recursive MinMax algorithm to evaluate 
+	 //each game state at a given depth to return the Location for the next best move.
+	 public Location minimax (Game g, int depth, boolean Max) {
 		 if (depth == 0) {
-			 return node.score;
+			 return estimate(g.getBoard());
+			// return Node.data; //return evaluationScore for terminal node
 		 }
 		 Node childNodes = node.getChildNodes();
 		 if (Max) {
@@ -155,7 +154,7 @@ public abstract class MinMaxAI extends Controller {
 			return value;
 			 }
 		 }
-		 
+		 	 
 		 else //minimizing score
 			value = +1;
 		 	for (int i = 0; i < childNodes.getLength(); i++) {
@@ -163,5 +162,9 @@ public abstract class MinMaxAI extends Controller {
 		 	return value;
 		 	}
 	 }
-}
 	 
+	 for (moves)
+	 
+	 
+}
+	  

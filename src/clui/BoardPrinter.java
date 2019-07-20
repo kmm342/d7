@@ -5,7 +5,7 @@ import model.Board.State;
 
 /**
  * Helper methods to print out {@link model.Board}s on the console.  This
- * class can also be used as a GameListener; it will cause the board to be
+ * class can also be used as a GameListener; it will cause the board to bed
  * printed whenever the board changes.
  */
 public class BoardPrinter implements GameListener {
