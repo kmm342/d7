@@ -30,7 +30,7 @@ public class Heap<E, P> implements PriorityQueue<E, P> {
 	
 	@Override
 	public Comparator<? super P> comparator() {
-		//still working on it
+		//still working 
 		
 		return null;
 	}
