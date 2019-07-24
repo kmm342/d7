@@ -11,18 +11,30 @@ import java.util.ArrayList;
 	import java.util.Arrays;
 	import java.util.Comparator;
 
+	
+	
 	public abstract class Sorter<E> {
 		
 		////////////////////////////////////////////////////////////////////////////
 		// comparator handling wrappers ////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////
-			
+		
+		
 		private Comparator<E> cmp;
 		
 		public Sorter(Comparator<E> cmp) {
 			this.cmp = cmp;
 		}
 		
+		/**
+		 * Precondition:
+		 *     0            length
+		 * a: [     ?      ]
+		 * 
+		 * Postcondition: a is sorted, (according to cmp)
+		 *     0            length
+		 * a: [   sorted   ]
+		 */
 		public abstract void sort(List<E> a);
 		
 		/** exchange a[i] and a[j] */
