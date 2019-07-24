@@ -1,4 +1,5 @@
 package d7;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Sorting<E> {
+	
+	public abstract void sort(List<E> a);
 	
 	////////////////////////////////////////////////////////////////////////////
 	// comparator handling wrappers ////////////////////////////////////////////
@@ -294,5 +297,9 @@ public class Sorting<E> {
 			s.selectionSort(a);
 			assertEquals(testCaseSorted(), a);			
 		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
 }
