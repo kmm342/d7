@@ -11,8 +11,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Sorting<E> {
+public abstract class Sorting<E> {
 	
+	
+	/**
+	 * Precondition:
+	 *     0            length
+	 * a: [     ?      ]
+	 * 
+	 * Postcondition: a is sorted, (according to cmp)
+	 *     0            length
+	 * a: [   sorted   ]
+	 */
 	public abstract void sort(List<E> a);
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -296,6 +306,11 @@ public class Sorting<E> {
 			List<Integer>    a = testCase();
 			s.selectionSort(a);
 			assertEquals(testCaseSorted(), a);			
+		}
+		
+		@Test
+		public abstract void testSort() {
+			
 		}
 	}
 	public static void main(String[] args) {
