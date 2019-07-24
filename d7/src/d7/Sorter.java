@@ -79,7 +79,7 @@ import java.util.ArrayList;
 		 * @param start
 		 * @param end
 		 */
-		public void mergeSort(List<E> a, int start, int end) {
+		protected void mergeSort(List<E> a, int start, int end) {
 			if (end - start <= 1)
 				return;
 			
