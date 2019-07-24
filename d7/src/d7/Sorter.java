@@ -69,10 +69,6 @@ import java.util.ArrayList;
 		////////////////////////////////////////////////////////////////////////////
 		// Merge sort //////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////
-
-		public void mergeSort(List<E> a) {
-			mergeSort(a,0,a.size());
-		}
 		
 		/** sort a[start..end) and leave rest of a alone
 		 * post condition:
@@ -83,7 +79,7 @@ import java.util.ArrayList;
 		 * @param start
 		 * @param end
 		 */
-		private void mergeSort(List<E> a, int start, int end) {
+		public void mergeSort(List<E> a, int start, int end) {
 			if (end - start <= 1)
 				return;
 			
@@ -150,7 +146,7 @@ import java.util.ArrayList;
 			
 			abstract Sorter<Integer> sorter();
 			
-			private static List<Integer> testCase() {
+			protected static List<Integer> testCase() {
 				//                   0 1 2 3 4 5 6 7 8
 				return Arrays.asList(1,0,7,3,5,4,9,2,0);
 			}
@@ -188,14 +184,6 @@ import java.util.ArrayList;
 				s.sort(a);
 				assertEquals(testCaseSorted(), a);
 			}
-			@Test
-			public void testIndexOfMin() {
-				Sorter<Integer> s = sorter();
-				List<Integer>    a = testCase();
-				
-				assertEquals(0, a.get(s.indexOfMin(a, 0, a.size())));
-				assertEquals(3, a.get(s.indexOfMin(a, 2, 5)));
-			}
 			
 			@Test
 			public void testMerge() {
@@ -216,3 +204,5 @@ import java.util.ArrayList;
 	}
 
 }
+	
+	

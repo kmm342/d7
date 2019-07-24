@@ -1,7 +1,11 @@
 package d7;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Comparator;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
 
 public class SelectionSorter<E> extends Sorter<E>{
 	
@@ -56,8 +60,30 @@ public class SelectionSorter<E> extends Sorter<E>{
 
 	}
 	
+	public static class Tests extends Sorter.Tests  {
+
+		@Override
+		Sorter<Integer> sorter() {
+			return new SelectionSorter<Integer>(Comparator.naturalOrder());
+			// TODO Auto-generated method stub
+
+		}
+
+		@Test
+		public void testIndexOfMin() {
+			Sorter<Integer> s = sorter();
+			List<Integer>    a = testCase();
+			
+			assertEquals(0, a.get(s.indexOfMin(a, 0, a.size())));
+			assertEquals(3, a.get(s.indexOfMin(a, 2, 5)));
+		}
+			
+	}
+	
 	public void SelectionSorter(List<E> a) {
 		// TODO Auto-generated method stub
 	}
 
 }
+
+
