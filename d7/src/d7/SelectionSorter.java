@@ -74,8 +74,8 @@ public class SelectionSorter<E> extends Sorter<E>{
 			Sorter<Integer> s = sorter();
 			List<Integer>    a = testCase();
 			
-			assertEquals(0, a.get(s.indexOfMin(a, 0, a.size())));
-			assertEquals(3, a.get(s.indexOfMin(a, 2, 5)));
+			assertEquals(0, a.get(((SelectionSorter<Integer>) s).indexOfMin(a, 0, a.size())));
+			assertEquals(3, a.get(((SelectionSorter<Integer>) s).indexOfMin(a, 2, 5)));
 		}
 			
 	}
